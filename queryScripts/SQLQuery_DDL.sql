@@ -1,0 +1,78 @@
+CREATE DATABASE dbOnlineEcommerce;
+USE dbOnlineEcommerce;
+
+CREATE TABLE Category(
+	CategoryId INT IDENTITY PRIMARY KEY NOT NULL,
+	CategoryName VARCHAR (500) NOT NULL UNIQUE,
+	IsActive BIT NULL,
+	IsDelete BIT NULL
+);
+
+CREATE TABLE Product(
+	ProductId INT IDENTITY PRIMARY KEY NOT NULL,
+	ProductName VARCHAR(500) NOT NULL UNIQUE,
+	IsActive BIT NULL,
+	IsDelete BIT NULL,
+	CreatedDate DATETIME NULL,
+	ModifiedDate DATETIME NULL,
+	Description VARCHAR(max) NULL,
+	ProductImage VARCHAR(max),
+	IsFeatured BIT NULL,
+	Quantity INT NOT NULL DEFAULT(1),
+	CategoryId INT FOREIGN KEY REFERENCES Category(CategoryId),
+);
+
+CREATE TABLE CartStatus(
+	CartStatusId INT IDENTITY PRIMARY KEY NOT NULL,
+	CartStatus VARCHAR(500),
+);
+
+CREATE TABLE Members(
+	MemberId INT PRIMARY KEY IDENTITY NOT NULL,
+	FirstName VARCHAR(200) NOT NULL,
+	LastName VARCHAR(200) NOT NULL,
+	EmailId VARCHAR(200) UNIQUE,
+	Password VARCHAR(500) NOT NULL,
+	IsActive BIT NULL,
+	IsDelete BIT NULL,
+	CreatedOn DATETIME,
+	ModifiedOn DATETIME
+);
+
+CREATE TABLE ShippingDetails (
+	ShippingDetailId INT IDENTITY PRIMARY KEY NOT NULL,
+	Adress VARCHAR(500) NOT NULL,
+	City VARCHAR(500) NOT NULL,
+	State VARCHAR(500) NOT NULL,
+	Country VARCHAR(50) NOT NULL,
+	ZipCode VARCHAR(50),
+	AmountPaid decimal,
+	PaymentType VARCHAR(50),
+	OrderId INT,
+	MemberId INT FOREIGN KEY REFERENCES Members(MemberId)
+);
+
+CREATE TABLE Roles (
+	RoleId	INT PRIMARY KEY IDENTITY NOT NULL,
+	RoleName VARCHAR(200) UNIQUE
+);
+
+CREATE TABLE Cart(
+	CartId INT PRIMARY KEY IDENTITY NOT NULL,
+	ProductId INT FOREIGN KEY REFERENCES Product(ProductId),
+	MemberId INT FOREIGN KEY REFERENCES Members(MemberId),
+	CartStatusId INT FOREIGN KEY REFERENCES CartStatus(CartStatusId),
+);
+
+CREATE TABLE MemberRole (
+	MemberRoleID INT IDENTITY PRIMARY KEY,
+	MemberId INT FOREIGN KEY REFERENCES Members(MemberId),
+	RoleId INT FOREIGN KEY REFERENCES Roles(RoleId),
+);
+
+
+CREATE TABLE SlideImage(
+	SlideId INT IDENTITY PRIMARY KEY NOT NULL,
+	SlideTitle VARCHAR(500),
+	SlideImage VARCHAR(max)
+);
