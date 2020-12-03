@@ -4,6 +4,15 @@
 <p align="center">
   Aplicação funcional desenvolvido com C#, SQLServer, Xamarin e React (web) 
 </p>
+
+
+## :pushpin: Pré Requisitos
+- IDE Visual Studio ou Vs Code;
+- Conhecimentos em C# e MVC;
+- Microsoft Sql Server
+- ReactJs e Xamarin;
+
+
 <!--
 <p align="center">
   <a href="https://github.com/facebook/react-native/blob/master/LICENSE">
@@ -24,11 +33,7 @@
 </p>
 
 
-Requirements:
 
-You should  have Visual Studio  2015
-Some C#, MVC, and General Web-Development Knowledge
-You Should have MS-SQL Sarver 2014 or 2016 you can also use 2012
 Discussions:
 
 I will Discuss about   the project, Also Discuss  ASP.NET MVC-5,SQL Server, Store Procedures, Entity Framework, Repository, Bootstrap & CSS Style jQuery, Ajax, Authentication and Roles, CEUD(Insert, Update, Delete), Multiple, Layout, Views & Partial Views .
