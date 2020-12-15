@@ -1,78 +1,123 @@
-CREATE DATABASE dbOnlineEcommerce;
-USE dbOnlineEcommerce;
+CREATE DATABASE dbDevStore;
+USE dbDevStore;
+GO
+
+
+------ CREATE
 
 CREATE TABLE Category(
 	CategoryId INT IDENTITY PRIMARY KEY NOT NULL,
-	CategoryName VARCHAR (500) NOT NULL UNIQUE,
-	IsActive BIT NULL,
-	IsDelete BIT NULL
+	CategoryName VARCHAR (50) NOT NULL UNIQUE,
+	Description VARCHAR(500) NULL,
 );
 
 CREATE TABLE Product(
 	ProductId INT IDENTITY PRIMARY KEY NOT NULL,
 	ProductName VARCHAR(500) NOT NULL UNIQUE,
-	IsActive BIT NULL,
-	IsDelete BIT NULL,
-	CreatedDate DATETIME NULL,
-	ModifiedDate DATETIME NULL,
-	Description VARCHAR(max) NULL,
-	ProductImage VARCHAR(max),
-	IsFeatured BIT NULL,
-	Quantity INT NOT NULL DEFAULT(1),
+	IsAvaliable BIT NULL DEFAULT(1),
+	CreatedAt DATETIME NOT NULL,
+	Description VARCHAR(max) NOT NULL,
+	ProductImage VARBINARY(max) NOT NULL,
+	IsFeatured BIT NOT NULL DEFAULT(0),
+	PricePerUnity DECIMAL NOT NULL,
+	Stock INT NOT NULL,
 	CategoryId INT FOREIGN KEY REFERENCES Category(CategoryId),
 );
 
-CREATE TABLE CartStatus(
-	CartStatusId INT IDENTITY PRIMARY KEY NOT NULL,
-	CartStatus VARCHAR(500),
+CREATE TABLE Discount (
+	DiscountId INT IDENTITY PRIMARY KEY NOT NULL,
+	NewPrice DECIMAL NOT NULL,
+	IsActive BIT DEFAULT(1),
+	EndDate DATETIME NOT NULL,
+	ProductId INT FOREIGN KEY REFERENCES Product(ProductId)
 );
 
-CREATE TABLE Members(
-	MemberId INT PRIMARY KEY IDENTITY NOT NULL,
-	FirstName VARCHAR(200) NOT NULL,
-	LastName VARCHAR(200) NOT NULL,
-	EmailId VARCHAR(200) UNIQUE,
-	Password VARCHAR(500) NOT NULL,
-	IsActive BIT NULL,
-	IsDelete BIT NULL,
-	CreatedOn DATETIME,
-	ModifiedOn DATETIME
+CREATE TABLE PerfilUser(
+	IdPerfil INT IDENTITY PRIMARY KEY NOT NULL,
+	PerfilType VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE ShippingDetails (
-	ShippingDetailId INT IDENTITY PRIMARY KEY NOT NULL,
-	Adress VARCHAR(500) NOT NULL,
-	City VARCHAR(500) NOT NULL,
-	State VARCHAR(500) NOT NULL,
-	Country VARCHAR(50) NOT NULL,
-	ZipCode VARCHAR(50),
-	AmountPaid decimal,
-	PaymentType VARCHAR(50),
-	OrderId INT,
-	MemberId INT FOREIGN KEY REFERENCES Members(MemberId)
+CREATE TABLE Users(
+	UserId INT IDENTITY PRIMARY KEY NOT NULL,
+	FirstName VARCHAR(100) NOT NULL,
+	LastName VARCHAR(100) NOT NULL,
+	Email VARCHAR(100) UNIQUE NOT NULL,
+	Password VARCHAR(100) NOT NULL,
+	CreatedAt DATETIME NOT NULL,
+	ProfileImage VARBINARY(max) NOT NULL,
+	IdPerfil INT FOREIGN KEY REFERENCES PerfilUser(IdPerfil)
 );
 
-CREATE TABLE Roles (
-	RoleId	INT PRIMARY KEY IDENTITY NOT NULL,
-	RoleName VARCHAR(200) UNIQUE
-);
-
-CREATE TABLE Cart(
-	CartId INT PRIMARY KEY IDENTITY NOT NULL,
+CREATE TABLE CartItem(
+	CartId INT IDENTITY PRIMARY KEY NOT NULL,
+	ProductQuantity INT DEFAULT(1) NOT NULL,
 	ProductId INT FOREIGN KEY REFERENCES Product(ProductId),
-	MemberId INT FOREIGN KEY REFERENCES Members(MemberId),
-	CartStatusId INT FOREIGN KEY REFERENCES CartStatus(CartStatusId),
+	UserId INT FOREIGN KEY REFERENCES Users(UserId)
 );
 
-CREATE TABLE MemberRole (
-	MemberRoleID INT IDENTITY PRIMARY KEY,
-	MemberId INT FOREIGN KEY REFERENCES Members(MemberId),
-	RoleId INT FOREIGN KEY REFERENCES Roles(RoleId),
+CREATE TABLE Orders(
+	OrderId INT IDENTITY PRIMARY KEY NOT NULL,
+	OrderDate DATETIME NOT NULL,
+	IsCanceled BIT DEFAULT(0) NOT NULL,	
+	IsReceived BIT DEFAULT(0) NOT NULL,
+	AmountPaid DECIMAL NOT NULL,
+	PaymentType VARCHAR(50) NOT NULL,
+	MobileNumber CHAR(12) NULL,
+	UserId INT FOREIGN KEY REFERENCES Users(UserId),
+	CartId INT FOREIGN KEY REFERENCES CartItem(CartId)
 );
 
-
-CREATE TABLE SlideImage(
-	SlideId INT IDENTITY PRIMARY KEY NOT NULL,
-	SlideTitle VARCHAR(500),
-	SlideImage VARCHAR(max)
+CREATE TABLE Adress(
+	AdressId INT IDENTITY PRIMARY KEY NOT NULL,
+	Cep VARCHAR(50) NOT NULL,
+	Logradouro VARCHAR(500) NOT NULL,
+	Complemento VARCHAR(500) NULL,
+	Bairro VARCHAR(500) NOT NULL,
+	Cidade VARCHAR(500) NOT NULL,
+	Estado VARCHAR(500) NOT NULL,
+	DDD CHAR(3) NOT NULL,
+	UserId INT FOREIGN KEY REFERENCES Users(UserId)
 );
+
+--CREATE TABLE BannerItem(
+--	BannerId INT IDENTITY PRIMARY KEY NOT NULL,
+--	ImageBanner VARCHAR(max) NOT NULL,
+--	Title VARCHAR(500) NOT NULL,
+--	Price DECIMAL NOT NULL,
+--	CategoryId INT FOREIGN KEY REFERENCES Category(CategoryId),
+--);
+
+
+
+
+
+---------- FUNCTIONS
+
+CREATE FUNCTION ListarCategorias()
+RETURNS TABLE AS RETURN SELECT * FROM Category;
+
+CREATE FUNCTION ListarProdutos()
+RETURNS TABLE AS RETURN SELECT * FROM Product;
+
+
+
+
+
+---------- PROCEDURES
+
+CREATE PROCEDURE IncluirNovoProduto
+	@_Nome  VARCHAR(500),
+	@_Description  VARCHAR(max),
+	@_ProductImage VARBINARY(max),
+	@_Featured BIT,
+	@_Price DECIMAL,
+	@_Stock INT,
+	@_IdCategory INT
+
+	AS
+	BEGIN
+
+	INSERT INTO Product (ProductName, CreatedAt, Description, ProductImage, IsFeatured,PricePerUnity, Stock, CategoryId) 
+		VALUES (@_Nome, GETDATE(), @_Description, @_ProductImage, @_Featured, @_Price, @_Stock, @_IdCategory );
+
+END
