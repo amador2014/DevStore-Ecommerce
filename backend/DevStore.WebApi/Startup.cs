@@ -24,6 +24,13 @@ namespace DevStore.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //ADD CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             services.AddControllers();
         }
 
@@ -35,16 +42,17 @@ namespace DevStore.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseAuthorization();
 
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DevStore.WebApi.Models
+namespace DevStore.WebApi.Domains
 {
     public partial class Category
     {

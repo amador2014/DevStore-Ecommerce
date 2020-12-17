@@ -1,18 +1,19 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using DevStore.WebApi.Domains;
 
 #nullable disable
 
-namespace DevStore.WebApi.Models
+namespace DevStore.WebApi.Contexts
 {
-    public partial class dbDevStoreContext : DbContext
+    public partial class DevStoreContext : DbContext
     {
-        public dbDevStoreContext()
+        public DevStoreContext()
         {
         }
 
-        public dbDevStoreContext(DbContextOptions<dbDevStoreContext> options)
+        public DevStoreContext(DbContextOptions<DevStoreContext> options)
             : base(options)
         {
         }
@@ -30,7 +31,7 @@ namespace DevStore.WebApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=dbDevStore;Trusted_Connection=True;");
             }
         }
