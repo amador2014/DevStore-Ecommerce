@@ -8,7 +8,11 @@ namespace DevStore.WebApi.Interfaces
 {
     public interface ICategory
     {
-        List<Category> Listar();
+        List<Category> GetAll();
+        Category GetSingle(int id);
+        void Add(Category category);
+        void Update (int id, Category category);
+        void Delete (int id);
 
     }
 }
