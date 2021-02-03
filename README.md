@@ -1,72 +1,130 @@
-<h1 align="center">
-   :package: Ecommerce DevStore (Em desenvolvimento) :package:
-</h1>
-<p align="center">
-   Aplicações web/mobile envolvendo tecnologias como Asp.Net Core, SQLServer, React Native, React, Ef Core, Autenticações, Roles e muito Design.
+<p align="center" > 
+   <h1 align="center">:package: Ecommerce DevStore :package:</h1>
+   <p align="center">
+      Espaço de compra totalmente dedicado ao mundo DEV, Presenteie uma amigo(a) hoje mesmo! 
+   </p>
 </p>
-
-
 
 ![banner](https://i.pinimg.com/originals/57/4c/6e/574c6ea2132634bcfd5ddb0daf69f095.png)
 
 
+<p align="center" >
+  <img align="center" src="https://img.shields.io/github/last-commit/amador2014/DevStore-Ecommerce">
+  <img align="center" src="https://img.shields.io/github/license/amador2014/DevStore-Ecommerce" />
+  <img align="center" src="https://img.shields.io/github/languages/count/amador2014/DevStore-Ecommerce" />
+  <img align="center" src="https://img.shields.io/github/languages/top/amador2014/DevStore-Ecommerce" />
+  <img align="center" src="https://img.shields.io/github/repo-size/amador2014/DevStore-Ecommerce" />
+
+</p>
 
 
-## :pushpin: Pré Requisitos
-- IDE Visual Studio ou Vs Code;
-- Conhecimentos em C# e MVC;
-- Microsoft Sql Server
-- ReactJs e Xamarin;
+<div id="tabela-de-conteudo" />
+
+## :point_right: Tabela de Conteúdos 
+- [Tabela de Conteúdos](#tabela-de-conteudo)
+- [Sobre](#sobre)
+- [Tecnologias](#tech)
+- [Clone o Projeto](#clonando)
+- [Futuras Implementações](#features)
+- [Contribuindo](#contribute)
+- [Abra no Gitpod](#gitpod)
+- [Interface](#layout)
+- [Inspirações](#inpirations)
+- [Licença](#licenca)
 
 
-## :page_with_curl: MVP
+<div id="sobre" />
 
-**API:**
-- CRUD Produtos (Buscar por id, filtragens..)
-- CRUD Categorias (Buscar por id, filtragens)
-- CRUD Usuario (Buscar por id, filtragens)
-- CRUD Cart
-- CRU Detalhes de Envio
-
-**Mobile: (apenas usuário)**
-- Produtos (Listagens e busca por id)
-- CRUD Usuario (Busca por id)
-- CRUD Cart
-- CRU Detalhes de Envio
-- Categorias (Listagens e busca por id))
-
-**Database:**
-- Modelagens (Conceitual, lógica, física)
-- Querys (DDL, DML, DQL)
-
-**Design:**
-- Telas Web
-- Telas Mobile
-- Elementos Visuais
-
-## :star: Interface 
-Clique aqui e acesse o [Figma.](https://www.figma.com/file/MQwC7msGWLxbqW03FDUdTh/DevStore?node-id=0%3A1&frame-preset-name=iPhone%2011%20Pro%20Max)
+## :pushpin: Sobre
+Desenvolvimento de aplicações web e mobile para fins de estudos nas tecnologias selecionadas e aprendizado em áreas como ecomerce, marketplace e pagamentos. 
 
 
-<!--
-## :star: Features além do esperado
-- Possibilidade de avaliar o produto (estrelas e comentário)
-- Integração com meios de pagamento
-- Deploy de toda Stack da Aplicação
-- Responsividade Web
-- Desenvolvimento do caráter visual da empresa (marca, icones, ilustrações..)
-- Login Integrado ao Google
-- Verificaçação de Email
--->
+<div id="tech" />
+
+## :rocket: Tecnologias
+- :heavy_check_mark: Aplicação Web ([**NextJs**](https://nextjs.org) e [**ReactJs**](https://pt-br.reactjs.org));
+- :heavy_check_mark: Backend ([**AspNet Core**](https://docs.microsoft.com/pt-br/aspnet/core/?view=aspnetcore-5.0)). 
+- :heavy_check_mark: Aplicação Mobile ([**React Native**](https://reactnative.dev/) with [**Expo**](https://expo.io));
+- :heavy_check_mark: Banco de Dados ([**SQL Server**](https://docs.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15));
+
+
+<div id="clonando" />
+
+## :octocat: Clone o Projeto
+```git
+  # Clonando
+  ❯ git clone https://github.com/amador2014/Proffy-Next-Level-Week.git
+ ```
+ 
+ <div id="features" />
+ 
+ ## :ring: Futuras Implementações 
+- [ ] Avaliação do produto (estrelas e review)
+- [ ] Integração com meios de pagamento além PayPal;
+- [ ] Deploy de toda Stack da Aplicação;
+- [ ] Login Integrado ao Google;
+- [ ] Verificaçação de Email;
+
+
+<div id="contribute" />
+
+## :tada: Contribuindo
+```
+  # Faça um Fork
+  # Crie uma branch da implementação
+    > git checkout -b my-new-feature
+  
+  # Adicione as modificações
+    > git add .
+    
+  # Faça um commit das alterações
+   > git commit -m "Add some feature"
+   
+  # Faça seu push
+   > git push origin my-new-feature
+   
+  # Agora só enviar a Pull Request =D
+ ```
+
+<div id="gitpod" />
+
+## :star: Abra no Gitpod
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/amador2014/DevStore-Ecommerce)
+
+
+<div id="layout" />
+
+## 🎨 Interface 
+
+### Web
+:construction: Em Desenvolvimento.. :construction:
+
+
+### Mobile
+Clique aqui e acesse o [Figma.](https://www.figma.com/file/MQwC7msGWLxbqW03FDUdTh/DevStore?node-id=0%3A1)
+
+<p align="center" >
+  <img align="center" width="600px" src="https://i.pinimg.com/564x/e8/b4/21/e8b42150501e2965791cf3bf624f9171.jpg" />
+</p>
+
+
+<div id="inpirations" />
 
 ## :blush: Inspirações
-- [https://www.geekstore.com/](https://www.geekstore.com/)
-- [https://www.sentidogeekstore.com.br/](https://www.sentidogeekstore.com.br/)
-- [https://thegeekstore.com.br/](https://thegeekstore.com.br/)
-- [https://www.geralgeek.com.br/](https://www.geralgeek.com.br/)
-- [https://nerdstore.com.br/](https://nerdstore.com.br/)
-- [https://www.studiogeek.com.br/](https://www.studiogeek.com.br/)
-- [https://www.lojamundogeek.com.br/](https://www.lojamundogeek.com.br/)
+- [Geekstore](https://www.geekstore.com/)
+- [Sentido Geek](https://www.sentidogeekstore.com.br/)
+- [The Geek Store/](https://thegeekstore.com.br/)
+- [Geral Geek](https://www.geralgeek.com.br/)
+- [Nerdstore](https://nerdstore.com.br/)
+- [Studio Geek](https://www.studiogeek.com.br/)
+- [Loja Mundo Geek](https://www.lojamundogeek.com.br/)
+
+
+<div id="licenca" />
+
+## :memo: Licença
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
 
 
 
